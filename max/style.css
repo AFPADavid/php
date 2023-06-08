@@ -1,0 +1,12 @@
+/* #form{
+    color: brown;
+}
+.section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+.verif{
+    border: solid;
+    border-color: brown;
+}
