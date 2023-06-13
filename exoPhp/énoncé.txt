@@ -1,0 +1,5 @@
+Formulaire qui me demande mon nom, prénom, sexe (via ces radio box), mon statuts (étudia, salarié, à mon compte, au chômage via un champs select) et date de naissance
+Au clique sur le bouton de validation je suis renvoyé vers une page qui me donne :
+Bonjour Monsieur/madame (seulement celui nécessaire) + Mon nom + Mon prénom (mon status)
+Vous êtes né le Ma date de naissance, vous avez donc XXANS et votre anniversaire est dans XX Jour(s => jour automatiquement avec ou sans S) ou votre anniversaire est aujourd’hui
+Et chargé une image différente si on est le matin (entre 8h et 12h) l’après midi (entre 12h et 19h) le soir / nuit (19h  8h)

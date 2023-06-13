@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercices et Réponses</title>
+    <!-- Inclure les liens vers les fichiers CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+
+    <!-- Utiliser HTML encode -->
+</head>
+<body>
+    <div class="container">
+        <h1>Liste des exercices</h1>
+        
+        <ul class="list-group"> 
+            <li class="list-group-item">
+                <h3>Exercice 1</h3>
+                <p>Créez un fichier PHP nommé "index.php". À l'intérieur de ce fichier, écrivez un programme qui affiche la phrase "Bonjour, monde !" à l'aide de la fonction "echo". Une autre avec la fonction print</p>
+<p>Expliquez la différence</p>
+<p>Ajouter du HTML dans cet affichage</p>
+                <button class="btn btn-primary" onclick="toggleAnswer('answer1')">Afficher la réponse</button>
+                 <div id="answer1" style="display: none;">
+                    <code>
+                        &lt;?php echo "Bonjour, monde !"; ?&gt;<br>
+                        &lt;?php print "Bonjour, monde !"; ?&gt;
+
+                    </code>
+
+                            <p>En PHP, les fonctions print et echo sont toutes deux utilisées pour afficher des données à l'écran, mais elles ont quelques différences subtiles.
+                                <br/>
+                                <br/>
+                    Syntaxe : La principale différence réside dans la syntaxe utilisée pour appeler ces fonctions :
+                                <br/>
+                                <br/>
+                    echo : echo expression1, expression2, ... ;
+                                <br/>
+                    print : print(expression); ou print expression; (sans parenthèses).
+                                <br/>
+                    Valeur de retour : echo n'a pas de valeur de retour, tandis que print renvoie toujours la valeur 1.
+                                <br/>
+                                <br/>
+                    Expression multiple : echo peut afficher plusieurs expressions séparées par des virgules, tandis que print ne prend qu'une seule expression. Par exemple :
+                                <br/>
+
+                                <br/>
+                    echo "Hello ", "World";  // Affiche : Hello World
+                                <br/>
+                    print "Hello ", "World"; // Erreur de syntaxe
+                                <br/>
+                    Utilisation dans une expression : echo peut être utilisé dans une expression plus complexe, tandis que print ne peut pas. Par exemple :
+                                <br/>
+                                <br/>
+
+                                <br/>
+                    $result = $var + print("Hello"); // Erreur de syntaxe
+                                <br/>
+                    $result = $var + echo "Hello";   // Syntaxiquement valide
+                                <br/>
+                    Vitesse d'exécution : En général, echo est légèrement plus rapide que print car il n'a pas de valeur de retour à gérer.
+                                <br/>
+                                <br/>
+                    En pratique, la plupart des développeurs utilisent echo pour afficher des données à l'écran car il est plus couramment utilisé et plus rapide. Cependant, print peut être utile lorsque vous avez besoin de connaître la valeur de retour pour des opérations spécifiques.
+                            </p>
+
+                            <code>&lt;?php
+                    echo "&lt;h1&gt;Bonjour, monde !&lt;/h1&gt;";
+                    ?&gt;</code>
+
+                </div>
+
+
+
+
+            </li>
+            
+            <li class="list-group-item">
+                <h3>Exercice 2</h3>
+                <p>Créez un formulaire HTML contenant un champ de texte. Lorsque le formulaire est soumis, récupérez la valeur saisie dans le champ de texte et affichez-la à l'aide de PHP.</p>
+                <button class="btn btn-primary" onclick="toggleAnswer('answer2')">Afficher la réponse</button>
+                <div id="answer2" style="display: none;">
+                    <code>&lt;form method="POST" action="&lt;?php echo htmlspecialchars($_SERVER['PHP_SELF']);?&gt;"&gt;<br>
+                                &lt;label for="texte"&gt;Entrez un texte :&lt;/label&gt;<br>
+                                &lt;input type="text" name="texte" id="texte" required&gt;<br>
+                                &lt;input type="submit" value="Envoyer"&gt;<br>
+                            &lt;/form&gt;<br>
+                        &lt;?php<br>
+                        if ($_SERVER["REQUEST_METHOD"] == "POST") {<br>
+                            $texte = $_POST["texte"];<br>
+                            echo "Le texte saisi est : " . $texte;<br>
+                        }<br>
+                        ?&gt;</code>
+                </div>
+            </li>
+            
+            
+
+
+
+              <li class="list-group-item">
+                <h3>Exercice 3</h3>
+                <p>Créez un tableau PHP contenant les noms de cinq personnes. Parcourez le tableau à l'aide d'une boucle et affichez chaque nom sur une nouvelle ligne.</p>
+                <button class="btn btn-primary" onclick="toggleAnswer('answer3')">Afficher la réponse</button>
+                <div id="answer3" style="display: none;">
+                    <code>
+                        &lt;?php<br>
+                        $personnes = array("Alice", "Bob", "Charlie", "David", "Eve");<br><br>
+
+                        foreach ($personnes as $nom) {<br>
+                            echo $nom . "&lt;br&gt;";<br>
+                        }<br>
+                        ?&gt;</code>
+                </div>
+            </li>
+
+
+
+              <li class="list-group-item">
+                <h3>Exercice 4</h3>
+                <p>Créez une fonction PHP qui prend deux nombres en paramètres et retourne leur somme. Appelez ensuite cette fonction avec différentes valeurs et affichez le résultat (vous pouvez faire les autres opérations).</p>
+                <button class="btn btn-primary" onclick="toggleAnswer('answer4')">Afficher la réponse</button>
+                <div id="answer4" style="display: none;">
+                    <code>
+                        
+                        &lt;?php<br>
+                        function additionner($nombre1, $nombre2) {<br>
+                            $somme = $nombre1 + $nombre2;<br>
+                            return $somme;<br>
+                        }<br>
+
+                        // Appels à la fonction et affichage des résultats<br>
+                        $resultat1 = additionner(5, 3);<br>
+                        echo "Le résultat de l'addition de 5 et 3 est : " . $resultat1 . "&lt;br&gt;";<br><br>
+
+                        $resultat2 = additionner(10, -2);<br>
+                        echo "Le résultat de l'addition de 10 et -2 est : " . $resultat2 . "&lt;br&gt;";<br><br>
+
+                        $resultat3 = additionner(7.5, 2.5);<br>
+                        echo "Le résultat de l'addition de 7.5 et 2.5 est : " . $resultat3 . "&lt;br&gt;";<br>
+                        ?&gt;<br>
+
+                    </code>
+                </div>
+            </li>
+
+
+              <li class="list-group-item">
+                <h3>Exercice 5</h3>
+                <p>Créez un script PHP qui génère un nombre aléatoire entre 1 et 10. Demandez ensuite à l'utilisateur de deviner le nombre généré. Affichez un message indiquant si la devinette est correcte ou non.</p>
+                <button class="btn btn-primary" onclick="toggleAnswer('answer5')">Afficher la réponse</button>
+                <div id="answer5" style="display: none;">
+                    <code>
+                                                
+                        &lt;form method="POST" action="&lt;?php echo htmlspecialchars($_SERVER['PHP_SELF']);?&gt;"&gt;<br>
+                        &lt;input type="number" name="nombre" min="1" max="10" required&gt;<br>
+                        &lt;input type="submit" value="Devinez"&gt;<br>
+                            &lt;/form&gt;<br>
+<br>
+                        &lt;?php<br>
+                        // Générer un nombre aléatoire entre 1 et 10<br>
+                        $nombreAleatoire = rand(1, 10);<br>
+
+                        // Vérifier si le formulaire a été soumis<br>
+                        if ($_SERVER["REQUEST_METHOD"] === "POST") {<br>
+                            // Récupérer la valeur devinée par l'utilisateur<br>
+                            $nombreDevine = $_POST["nombre"];<br>
+
+                            // Vérifier si la devinette est correcte<br>
+                            if ($nombreDevine == $nombreAleatoire) {<br>
+                                echo "Bravo ! Vous avez deviné le bon nombre.";<br>
+                            } else {<br>
+                                echo "Désolé, le nombre correct était " . $nombreAleatoire . ". Essayez encore !";<br>
+                            }<br>
+                        }<br>
+                        ?&gt;
+                    </code>
+                </div>
+            </li>
+
+              <li class="list-group-item">
+                <h3>Exercice 6</h3>
+                <p>Créez un formulaire d'inscription avec des champs tels que le nom, l'adresse e-mail et le mot de passe. Validez les entrées côté serveur en vérifiant que tous les champs sont remplis et que l'adresse e-mail est valide. (un peu de recherche à faire)</p>
+                <button class="btn btn-primary" onclick="toggleAnswer('answer6')">Afficher la réponse</button>
+                <div id="answer6" style="display: none;">
+                    <code>
+                        &lt;?php<br>
+                        // Variables pour stocker les messages d'erreur<br>
+                        $erreurNom = $erreurEmail = $erreurMotDePasse = "";<br>
+<br>
+                        // Variables pour stocker les valeurs des champs<br>
+                        $nom = $email = $motDePasse = "";<br>
+<br>
+                        // Vérification du formulaire lorsqu'il est soumis<br>
+                        if ($_SERVER["REQUEST_METHOD"] === "POST") {<br>
+                            // Validation du champ Nom<br>
+                            if (empty($_POST["nom"])) {<br>
+                                $erreurNom = "Veuillez saisir votre nom";<br>
+                            } else {<br>
+                                $nom = $_POST["nom"];<br>
+                            }<br>
+<br>
+                            // Validation du champ Adresse e-mail<br>
+                            if (empty($_POST["email"])) {<br>
+                                $erreurEmail = "Veuillez saisir votre adresse e-mail";<br>
+                            } else {<br>
+                                $email = $_POST["email"];<br>
+                                // Vérification de la validité de l'adresse e-mail<br>
+                                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {<br>
+                                    $erreurEmail = "Adresse e-mail invalide";<br>
+                                }<br>
+                            }<br>
+<br>
+                            // Validation du champ Mot de passe<br>
+                            if (empty($_POST["motDePasse"])) {<br>
+                                $erreurMotDePasse = "Veuillez saisir votre mot de passe";<br>
+                            } else {<br>
+                                $motDePasse = $_POST["motDePasse"];<br>
+                            }<br>
+<br>
+                            // Si toutes les validations sont réussies, afficher un message de succès<br>
+                            if (empty($erreurNom) &amp;&amp; empty($erreurEmail) &amp;&amp; empty($erreurMotDePasse)) {<br>
+                                echo "Inscription réussie !";<br>
+                                // Vous pouvez également ajouter ici le code pour enregistrer les données dans une base de données, par exemple<br>
+                            }<br>
+                        }<br>
+                        ?&gt;<br>
+<br>
+                            &lt;h1&gt;Formulaire d'inscription&lt;/h1&gt;<br>
+                        &lt;form method="POST" action="&lt;?php echo htmlspecialchars($_SERVER['PHP_SELF']);?&gt;"&gt;<br>
+                                &lt;label for="nom"&gt;Nom :&lt;/label&gt;<br>
+                                &lt;input type="text" name="nom" id="nom" value="&lt;?php echo $nom; ?&gt;"&gt;<br>
+                                &lt;span style="color: red;"&gt;&lt;?php echo $erreurNom; ?&gt;&lt;/span&gt;&lt;br&gt;<br>
+<br>
+                                &lt;label for="email"&gt;Adresse e-mail :&lt;/label&gt;<br>
+                                &lt;input type="email" name="email" id="email" value="&lt;?php echo $email; ?&gt;"&gt;<br>
+                                &lt;span style="color: red;"&gt;&lt;?php echo $erreurEmail; ?&gt;&lt;/span&gt;&lt;br&gt;<br>
+<br>
+                                &lt;label for="motDePasse"&gt;Mot de passe :&lt;/label&gt;<br>
+                                &lt;input type="password" name="motDePasse" id="motDePasse"&gt;<br>
+                         
+                        
+                    </code>
+                </div>
+            </li>
+
+
+              <li class="list-group-item">
+                <h3>Exercice 7</h3>
+                <p>Créez une fonction PHP qui prend une chaîne de caractères en paramètre et retourne le nombre de mots qu'elle contient. Testez ensuite la fonction avec différentes chaînes et affichez le résultat.</p>
+                <button class="btn btn-primary" onclick="toggleAnswer('answer7')">Afficher la réponse</button>
+                <div id="answer7" style="display: none;">
+                    <code>
+                                            
+                    &lt;?php<br>
+                    function compterMots($chaine) {<br>
+                        $mots = explode(" ", $chaine);<br>
+                        $nombreMots = count($mots);<br>
+                        return $nombreMots;<br>
+                    }<br>
+<br>
+                    // Exemples d'utilisation de la fonction compterMots()<br>
+                    $chaine1 = "Bonjour, comment ça va ?";<br>
+                    $chaine2 = "Le PHP est un langage de programmation puissant et polyvalent.";<br>
+                    $chaine3 = "Ceci est une phrase.";<br>
+<br>
+                    $nombreMots1 = compterMots($chaine1);<br>
+                    $nombreMots2 = compterMots($chaine2);<br>
+                    $nombreMots3 = compterMots($chaine3);<br>
+<br>
+                    echo "La phrase '".$chaine1."' contient ".$nombreMots1." mots.&lt;br&gt;";<br>
+                    echo "La phrase '".$chaine2."' contient ".$nombreMots2." mots.&lt;br&gt;";<br>
+                    echo "La phrase '".$chaine3."' contient ".$nombreMots3." mots.&lt;br&gt;";<br>
+                    ?&gt;<br>
+
+
+
+                    </code>
+                </div>
+            </li>
+
+
+              <li class="list-group-item">
+                <h3>Exercice 8</h3>
+                <p>Créez un script PHP qui récupère la date et l'heure actuelles et les affiche dans un format lisible pour les humains, par exemple "Mardi 31 mai 2023, 14:30".</p>
+                <button class="btn btn-primary" onclick="toggleAnswer('answer8')">Afficher la réponse</button>
+                <div id="answer8" style="display: none;">
+                    <code>
+                        
+
+
+                        &lt;?php<br>
+                                                // Définir le fuseau horaire<br>
+                                                date_default_timezone_set('Europe/Paris'); <br>
+                                                <br>
+                                                // Récupérer la date et l'heure actuelles<br>
+                                                $dateActuelle = date("d/m/Y");<br>
+                                                $heureActuelle = date("H:i");<br>
+                                                <br>
+                                                // Formater la date et l'heure dans un format lisible<br>
+                                                $dateObj = DateTime::createFromFormat("d/m/Y", $dateActuelle);<br>
+                                                $dateLisible = $dateObj-&gt;format("l d F Y");<br>
+                                                <br>
+                                                $heureLisible = date("H:i", strtotime($heureActuelle));<br>
+                                                <br>
+                                                // Afficher la date et l'heure lisible<br>
+                                                echo "Aujourd'hui, nous sommes ".$dateLisible." et il est ".$heureLisible.".";<br>
+                                                ?&gt;<br>
+                                                <br>
+                        <br>
+                        <br>
+                        <br>
+                                                &lt;?php<br>
+                                                // Version écrite en français<br>
+                                                // Définir le fuseau horaire<br>
+                                                date_default_timezone_set('Europe/Paris');<br>
+                                                <br>
+                                                // Récupérer la date et l'heure actuelles<br>
+                                                $dateActuelle = date("d/m/Y");<br>
+                                                $heureActuelle = date("H:i");<br>
+                                                <br>
+                                                // Formater la date et l'heure dans un format lisible<br>
+                                                //$dateLisible = date("l d F Y", strtotime($dateActuelle));<br>
+                                                //$dateObj = DateTime::createFromFormat("d/m/Y", $dateActuelle);<br>
+                                                $dateLisible = $dateObj-&gt;format("l d F Y");<br>
+                                                <br>
+                                                $jourEnAnglais = array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');<br>
+                                                $jourEnFrancais = array('Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche');<br>
+                                                $dateLisible = str_replace($jourEnAnglais, $jourEnFrancais, $dateLisible);<br>
+                                                <br>
+                        <br>
+                                                $moisEnAnglais = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');<br>
+                                                $moisEnFrancais = array('janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre');<br>
+                                                $dateLisible = str_replace($moisEnAnglais, $moisEnFrancais, $dateLisible);<br>
+                                                <br>
+                                                $heureLisible = date("H:i", strtotime($heureActuelle));<br>
+                                                <br>
+                                                // Afficher la date et l'heure lisible<br>
+                                                echo "Aujourd'hui, nous sommes ".$dateLisible." et il est ".$heureLisible.".";<br>
+                                                ?&gt;<br>
+                                                <br>
+                        <br>
+                        <br>
+                                            </code>
+                </div>
+            </li>
+
+
+              <li class="list-group-item">
+                <h3>Exercice 9</h3>
+                <p>Créez un formulaire de connexion avec un champ pour l'identifiant (nom d'utilisateur) et un champ pour le mot de passe. Vérifiez les informations de connexion côté serveur et, si les informations sont correctes, enregistrez l'identifiant dans une variable de session. Affichez ensuite un message de bienvenue avec l'identifiant de l'utilisateur connecté.</p>
+                <button class="btn btn-primary" onclick="toggleAnswer('answer9')">Afficher la réponse</button>
+                <div id="answer9" style="display: none;">
+                    <code>
+                        
+
+                    &lt;?php<br>
+                    session_start();<br>
+<br>
+                    // Vérification des informations de connexion<br>
+                    if ($_SERVER["REQUEST_METHOD"] === "POST") {<br>
+                        $identifiantAttendu = "admin";<br>
+                        $motDePasseAttendu = "password";<br>
+<br>
+                        $identifiant = $_POST["identifiant"];<br>
+                        $motDePasse = $_POST["motDePasse"];<br>
+<br>
+                        if ($identifiant === $identifiantAttendu &amp;&amp; $motDePasse === $motDePasseAttendu) {<br>
+                            $_SESSION["identifiant"] = $identifiant;<br>
+                        } else {<br>
+                            echo "Identifiant ou mot de passe incorrect.";<br>
+                        }<br>
+                    }<br>
+<br>
+                    // Vérification de la session pour afficher le message de bienvenue<br>
+                    if (isset($_SESSION["identifiant"])) {<br>
+                        $identifiantConnecte = $_SESSION["identifiant"];<br>
+                        echo "Bienvenue, ".$identifiantConnecte." ! Vous êtes connecté.";<br>
+                    }<br>
+                    ?&gt;<br>
+<br>
+                        &lt;h1&gt;Formulaire de connexion&lt;/h1&gt;<br>
+                        &lt;form method="POST" action="&lt;?php echo htmlspecialchars($_SERVER['PHP_SELF']);?&gt;"&gt;<br>
+                            &lt;label for="identifiant"&gt;Identifiant :&lt;/label&gt;<br>
+                            &lt;input type="text" name="identifiant" id="identifiant" required&gt;&lt;br&gt;<br>
+<br>
+                            &lt;label for="motDePasse"&gt;Mot de passe :&lt;/label&gt;<br>
+                            &lt;input type="password" name="motDePasse" id="motDePasse" required&gt;&lt;br&gt;<br>
+<br>
+                            &lt;input type="submit" value="Se connecter"&gt;<br>
+                        &lt;/form&gt;<br>
+
+                    </code>
+                </div>
+            </li>
+
+
+              <li class="list-group-item">
+                <h3>Exercice 10</h3>
+                <p>Créez un fichier CSV contenant une liste de noms et d'adresses e-mail. À l'aide de PHP, lisez le contenu du fichier CSV et affichez-le sous forme de tableau HTML.</p>
+                <button class="btn btn-primary" onclick="toggleAnswer('answer10')">Afficher la réponse</button>
+                <div id="answer10" style="display: none;">
+                    <code>
+                                            
+                    &lt;?php<br>
+                    // Chemin vers le fichier CSV<br>
+                    $cheminFichierCSV = "chemin/vers/votre/fichier.csv";<br>
+<br>
+                    // Lire le contenu du fichier CSV<br>
+                    $contenuCSV = file_get_contents($cheminFichierCSV);<br>
+<br>
+                    // Convertir le contenu CSV en tableau<br>
+                    $tableauCSV = explode("\n", $contenuCSV);<br>
+<br>
+                    // Afficher le tableau sous forme de tableau HTML<br>
+                    echo "&lt;table&gt;";<br>
+                    foreach ($tableauCSV as $ligne) {<br>
+                        echo "&lt;tr&gt;";<br>
+                        $colonnes = explode(",", $ligne);<br>
+                        foreach ($colonnes as $colonne) {<br>
+                            echo "&lt;td&gt;" . $colonne . "&lt;/td&gt;";<br>
+                        }<br>
+                        echo "&lt;/tr&gt;";<br>
+                    }<br>
+                    echo "&lt;/table&gt;";<br>
+                    ?&gt;<br>
+
+                    </code>
+                </div>
+            </li>
+
+
+
+
+
+
+
+              <li class="list-group-item">
+                <h3>Exercice supplémentaire du lundi</h3>
+                <p>Formulaire qui me demande mon nom, prénom, sexe (via ces radio box), mon statuts (étudia, salarié, à mon compte, au chômage via un champs select) et date de naissance</p>
+                <p>Au clique sur le bouton de validation je suis renvoyé vers une page qui me donne :
+                Bonjour Monsieur/madame (seulement celui nécessaire) + Mon nom + Mon prénom (mon status)
+                Vous êtes né le Ma date de naissance, vous avez donc XXANS et votre anniversaire est dans XX Jour(s => jour automatiquement avec ou sans S) ou votre anniversaire est aujourd’hui
+                Et chargé une image différente si on est le matin (entre 8h et 12h) l’après midi (entre 12h et 19h) le soir / nuit (19h  8h)
+                </p>
+                <button class="btn btn-primary" onclick="toggleAnswer('answer11')">Afficher la réponse</button>
+                <div id="answer11" style="display: none;">
+                    <h4>Page index</h4>
+                    <code>
+                        &lt;!DOCTYPE html&gt;
+<br>                        &lt;html&gt;
+<br>                        &lt;head&gt;
+<br>                          &lt;meta charset="UTF-8"&gt;
+<br>                          &lt;title&gt;Formulaire&lt;/title&gt;
+<br>                          &lt;style&gt;
+<br>                            #result {
+<br>                              display: none;
+<br>                              margin-top: 20px;
+<br>                            }
+<br>                          &lt;/style&gt;
+<br>                        &lt;/head&gt;
+<br>                        &lt;body&gt;
+<br>                          &lt;form action="result.php" method="POST"&gt;
+<br>                            &lt;label for="firstName"&gt;Prénom:&lt;/label&gt;
+<br>                            &lt;input type="text" name="firstName" required&gt;&lt;br&gt;
+<br>
+<br>                            &lt;label for="lastName"&gt;Nom:&lt;/label&gt;
+<br>                            &lt;input type="text" name="lastName" required&gt;&lt;br&gt;
+<br>
+<br>                            &lt;label&gt;Sexe:&lt;/label&gt;&lt;br&gt;
+<br>                            &lt;input type="radio" name="gender" value="Monsieur" required&gt;
+<br>                            &lt;label for="male"&gt;Monsieur&lt;/label&gt;&lt;br&gt;
+<br>                            &lt;input type="radio" name="gender" value="Madame" required&gt;
+<br>                            &lt;label for="female"&gt;Madame&lt;/label&gt;&lt;br&gt;
+<br>
+<br>                            &lt;label for="status"&gt;Statut:&lt;/label&gt;
+<br>                            &lt;select name="status" required&gt;
+<br>                              &lt;option value="étudiant"&gt;Étudiant(e)&lt;/option&gt;
+<br>                              &lt;option value="salarié"&gt;Salarié(e)&lt;/option&gt;
+<br>                              &lt;option value="à mon compte"&gt;À mon compte&lt;/option&gt;
+<br>                              &lt;option value="au chômage"&gt;Au chômage&lt;/option&gt;
+<br>                            &lt;/select&gt;&lt;br&gt;
+<br>
+<br>                            &lt;label for="birthdate"&gt;Date de naissance:&lt;/label&gt;
+<br>                            &lt;input type="date" name="birthdate" required&gt;&lt;br&gt;
+<br>
+<br>                            &lt;input type="submit" value="Valider"&gt;
+<br>                          &lt;/form&gt;
+<br>                        &lt;/body&gt;
+<br>                        &lt;/html&gt;
+<br>
+                    </code>
+
+                    <h4>Page result.php</h4>
+                    <code>
+                        
+                        &lt;!DOCTYPE&nbsp;html&gt;<br>
+                        &lt;html&gt;<br>
+                        &lt;head&gt;<br>
+                        &nbsp;&nbsp;&lt;meta&nbsp;charset=&quot;UTF&#45;8&quot;&gt;<br>
+                        &nbsp;&nbsp;&lt;title&gt;Résultat&lt;/title&gt;<br>
+                        &nbsp;&nbsp;&lt;style&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;img&nbsp;{<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max&#45;width:&nbsp;100%;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height:&nbsp;auto;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        &nbsp;&nbsp;&lt;/style&gt;<br>
+                        &lt;/head&gt;<br>
+                        &lt;body&gt;<br>
+                        &nbsp;&nbsp;&lt;?php<br>
+                        &nbsp;&nbsp;if&nbsp;($_SERVER[&quot;REQUEST_METHOD&quot;]&nbsp;==&nbsp;&quot;POST&quot;)&nbsp;{<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Vérification&nbsp;de&nbsp;la&nbsp;méthode&nbsp;de&nbsp;requête&nbsp;HTTP&nbsp;(POST)<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Récupération&nbsp;des&nbsp;valeurs&nbsp;du&nbsp;formulaire<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;$firstName&nbsp;=&nbsp;$_POST[&quot;firstName&quot;];<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;$lastName&nbsp;=&nbsp;$_POST[&quot;lastName&quot;];<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;$gender&nbsp;=&nbsp;$_POST[&quot;gender&quot;];<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;$status&nbsp;=&nbsp;$_POST[&quot;status&quot;];<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;$birthdate&nbsp;=&nbsp;new&nbsp;DateTime($_POST[&quot;birthdate&quot;]);<br>
+<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;$today&nbsp;=&nbsp;new&nbsp;DateTime();<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Calcul&nbsp;de&nbsp;l&#39;âge&nbsp;en&nbsp;utilisant&nbsp;la&nbsp;différence&nbsp;entre&nbsp;la&nbsp;date&nbsp;actuelle&nbsp;et&nbsp;la&nbsp;date&nbsp;de&nbsp;naissance<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;$age&nbsp;=&nbsp;$today&#45;&gt;diff($birthdate)&#45;&gt;y;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Extraction&nbsp;du&nbsp;mois&nbsp;de&nbsp;naissance&nbsp;et&nbsp;du&nbsp;mois&nbsp;actuel<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;$birthMonth&nbsp;=&nbsp;$birthdate&#45;&gt;format(&quot;n&quot;);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;$todayMonth&nbsp;=&nbsp;$today&#45;&gt;format(&quot;n&quot;);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Vérification&nbsp;si&nbsp;c&#39;est&nbsp;l&#39;anniversaire&nbsp;de&nbsp;l&#39;utilisateur<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;$isBirthday&nbsp;=&nbsp;($birthMonth&nbsp;==&nbsp;$todayMonth&nbsp;&amp;&amp;&nbsp;$birthdate&#45;&gt;format(&quot;j&quot;)&nbsp;==&nbsp;$today&#45;&gt;format(&quot;j&quot;));<br>
+<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Construction&nbsp;du&nbsp;message&nbsp;de&nbsp;salutation<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;$greeting&nbsp;=&nbsp;&quot;Bonjour&nbsp;&quot;&nbsp;.&nbsp;$gender&nbsp;.&nbsp;&quot;&nbsp;&quot;&nbsp;.&nbsp;$lastName&nbsp;.&nbsp;&quot;&nbsp;&quot;&nbsp;.&nbsp;$firstName&nbsp;.&nbsp;&quot;&nbsp;(&quot;&nbsp;.&nbsp;$status&nbsp;.&nbsp;&quot;)&quot;;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Construction&nbsp;du&nbsp;message&nbsp;d&#39;âge<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;$ageText&nbsp;=&nbsp;&quot;Vous&nbsp;êtes&nbsp;né(e)&nbsp;le&nbsp;&quot;&nbsp;.&nbsp;$birthdate&#45;&gt;format(&quot;d&nbsp;F&nbsp;Y&quot;)&nbsp;.&nbsp;&quot;,&nbsp;vous&nbsp;avez&nbsp;donc&nbsp;&quot;&nbsp;.&nbsp;$age&nbsp;.&nbsp;&quot;&nbsp;ans.&quot;;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;$birthdayText&nbsp;=&nbsp;&quot;&quot;;<br>
+<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;($isBirthday)&nbsp;{<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$birthdayText&nbsp;=&nbsp;&quot;Votre&nbsp;anniversaire&nbsp;est&nbsp;aujourd&#39;hui&nbsp;!&quot;;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Calcul&nbsp;du&nbsp;prochain&nbsp;anniversaire<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$nextBirthday&nbsp;=&nbsp;new&nbsp;DateTime($today&#45;&gt;format(&quot;Y&quot;)&nbsp;.&nbsp;&quot;&#45;&quot;&nbsp;.&nbsp;$birthMonth&nbsp;.&nbsp;&quot;&#45;&quot;&nbsp;.&nbsp;$birthdate&#45;&gt;format(&quot;d&quot;));<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;($nextBirthday&nbsp;&lt;&nbsp;$today)&nbsp;{<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$nextBirthday&#45;&gt;modify(&quot;+1&nbsp;year&quot;);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Calcul&nbsp;du&nbsp;nombre&nbsp;de&nbsp;jours&nbsp;restants&nbsp;jusqu&#39;à&nbsp;l&#39;anniversaire<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$daysUntilBirthday&nbsp;=&nbsp;$today&#45;&gt;diff($nextBirthday)&#45;&gt;days;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$daysText&nbsp;=&nbsp;($daysUntilBirthday&nbsp;===&nbsp;1)&nbsp;?&nbsp;&quot;jour&quot;&nbsp;:&nbsp;&quot;jours&quot;;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$birthdayText&nbsp;=&nbsp;&quot;Votre&nbsp;anniversaire&nbsp;est&nbsp;dans&nbsp;&quot;&nbsp;.&nbsp;$daysUntilBirthday&nbsp;.&nbsp;&quot;&nbsp;&quot;&nbsp;.&nbsp;$daysText&nbsp;.&nbsp;&quot;.&quot;;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Récupération&nbsp;de&nbsp;l&#39;heure&nbsp;actuelle<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;$currentTime&nbsp;=&nbsp;(int)$today&#45;&gt;format(&quot;G&quot;);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;$imageSource&nbsp;=&nbsp;&quot;&quot;;<br>
+<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;($currentTime&nbsp;&gt;=&nbsp;8&nbsp;&amp;&amp;&nbsp;$currentTime&nbsp;&lt;&nbsp;12)&nbsp;{<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$imageSource&nbsp;=&nbsp;&quot;matin.jpg&quot;;&nbsp;//&nbsp;Chemin&nbsp;vers&nbsp;l&#39;image&nbsp;du&nbsp;matin<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;($currentTime&nbsp;&gt;=&nbsp;12&nbsp;&amp;&amp;&nbsp;$currentTime&nbsp;&lt;&nbsp;19)&nbsp;{<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$imageSource&nbsp;=&nbsp;&quot;apres&#45;midi.jpg&quot;;&nbsp;//&nbsp;Chemin&nbsp;vers&nbsp;l&#39;image&nbsp;de&nbsp;l&#39;après&#45;midi<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$imageSource&nbsp;=&nbsp;&quot;soir&#45;nuit.jpg&quot;;&nbsp;//&nbsp;Chemin&nbsp;vers&nbsp;l&#39;image&nbsp;du&nbsp;soir/nuit<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;?&gt;<br>
+<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;Résultat:&lt;/h2&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;&lt;?php&nbsp;echo&nbsp;$greeting;&nbsp;?&gt;&lt;/p&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;&lt;?php&nbsp;echo&nbsp;$ageText;&nbsp;?&gt;&lt;/p&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;&lt;?php&nbsp;echo&nbsp;$birthdayText;&nbsp;?&gt;&lt;/p&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;img<br>
+                        &nbsp;src=&quot;&lt;?php&nbsp;echo&nbsp;$imageSource;&nbsp;?&gt;&quot;&nbsp;alt=&quot;Image&nbsp;de&nbsp;fond&quot;&gt;<br>
+                        &nbsp;&nbsp;&lt;?php&nbsp;}&nbsp;?&gt;<br>
+                        &lt;/body&gt;<br>
+                        &lt;/html&gt;<br>
+                        <br>
+                    </code>
+                </div>
+            </li>
+
+
+
+
+            
+        </ul>
+    </div>
+
+    <!-- Inclure les liens vers les fichiers JavaScript de Bootstrap et jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        function toggleAnswer(answerId) {
+            var answer = document.getElementById(answerId);
+            if (answer.style.display === "none") {
+                answer.style.display = "block";
+            } else {
+                answer.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
